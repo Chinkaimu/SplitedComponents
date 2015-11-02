@@ -7,6 +7,56 @@
     <groupId>splitedComponents</groupId>
     <artifactId>splitedComponents</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <name>splited components</name>
 
+    <dependencies>
+    <!-- jetty start -->
+    <dependency>
+        <groupId>org.mortbay.jetty</groupId>
+        <artifactId>jetty</artifactId>
+        <version>${jetty.version}</version>
+        <scope>provided</scope>
+    </dependency>
 
+    <dependency>
+        <groupId>org.mortbay.jetty</groupId>
+        <artifactId>jsp-2.1-jetty</artifactId>
+        <version>${jetty.version}</version>
+        <scope>provided</scope>
+    </dependency>
+    <!-- jetty end -->
+   </dependencies>
+
+    <build>
+       <plugins>
+           <plugin>
+               <groupId>org.apache.maven.plugins</groupId>
+               <artifactId>maven-resources-plugin</artifactId>
+               <version>${plugin.maven-resources}</version>
+               <configuration>
+                   <encoding>${project.build.sourceEncoding}</encoding>
+               </configuration>
+           </plugin>
+
+           <plugin>
+               <groupId>org.mortbay.jetty</groupId>
+               <artifactId>maven-jetty-plugin</artifactId>
+               <version>6.1.10</version>
+           </plugin>
+
+       </plugins>
+    </build>
+
+   <properties>
+
+       <!-- base setting -->
+       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+       <!--Plugins setting-->
+       <plugin.maven-resources>2.7</plugin.maven-resources>
+
+       <!--Lib setting-->
+        <jetty.version>6.1.22</jetty.version>
+
+   </properties>
 </project>
