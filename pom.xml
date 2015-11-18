@@ -39,13 +39,10 @@
            </plugin>
 
            <plugin>
-               <groupId>org.mortbay.jetty</groupId>
-               <artifactId>maven-jetty-plugin</artifactId>
-               <version>6.1.9</version>
-               <configuration>
-                   <webDefaultXml>src/main/resources/webdefault.xml</webDefaultXml>
-               </configuration>
-           </plugin>
+             <groupId>org.mortbay.jetty</groupId>
+             <artifactId>jetty-maven-plugin</artifactId>
+             <version>8.1.16.v20140903</version>
+            </plugin>
 
        </plugins>
     </build>
