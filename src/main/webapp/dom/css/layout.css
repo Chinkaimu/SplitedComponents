@@ -70,6 +70,7 @@ header nav li a{
 }
 
 #slideshow{
+    border-radius: 2px;
     width: 150px;
     height:150px;
     position:relative;
@@ -80,6 +81,13 @@ header nav li a{
     position:absolute;
     border-width: 0;
     outline-width: 0;
+}
+
+#frame{
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:99;
 }
 
 
