@@ -3,10 +3,7 @@
 <html lang="en">
 <head>
     <title>navbar_setting</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/beyond.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/demo.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/basic_beyond.css">
 </head>
 <body>
      <div class="setting">
