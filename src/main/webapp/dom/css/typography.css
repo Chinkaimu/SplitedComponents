@@ -38,6 +38,7 @@ h3 {
 }
 #imagegallery li {
     list-style-type: none;
+    display:inline;
 }
 textarea {
     font-family: "Helvetica","Arial",sans-serif;

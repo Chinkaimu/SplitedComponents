@@ -25,6 +25,11 @@
         <scope>provided</scope>
     </dependency>
     <!-- jetty end -->
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>2.3.23</version>
+        </dependency>
    </dependencies>
 
     <build>
