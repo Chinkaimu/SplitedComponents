@@ -222,7 +222,8 @@
     text-align: center;
     display: block;
     cursor: pointer;
-    border: none; }
+    border: none;
+    margin-top:20px;}
 .dropzone .dz-preview .dz-remove:hover {
     text-decoration: underline; }
 .dropzone .dz-preview:hover .dz-details {

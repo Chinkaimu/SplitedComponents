@@ -119,7 +119,7 @@
       withCredentials: false,
       parallelUploads: 2,
       uploadMultiple: false,
-      maxFilesize: 256,
+      maxFilesize: 500,
       paramName: "file",
       createImageThumbnails: true,
       maxThumbnailFilesize: 10,
@@ -138,7 +138,7 @@
       addRemoveLinks: false,
       previewsContainer: null,
       capture: null,
-      dictDefaultMessage: "click to upload file",
+      dictDefaultMessage: "",
       dictFallbackMessage: "你的浏览器不支持",
       dictFallbackText: "Please use the fallback form below to upload your files like in the olden days.",
       dictFileTooBig: "文件过大({{filesize}}MiB)。 最大文件为: {{maxFilesize}}MiB.",
@@ -274,6 +274,11 @@
                 return Dropzone.confirm(_this.options.dictCancelUploadConfirmation, function() {
                   return _this.removeFile(file);
                 });
+              }if(file.status === Dropzone.SUCCESS){
+                xhr = new XMLHttpRequest();
+                xhr.open("POST","/splitedComponents/delete?filename=" + file.name,true);
+                xhr.send();
+                return _this.removeFile(file);
               } else {
                 if (_this.options.dictRemoveFileConfirmation) {
                   return Dropzone.confirm(_this.options.dictRemoveFileConfirmation, function() {
