@@ -26,7 +26,6 @@
     </dependency>
 
     <!-- jetty end -->
-
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jsp-api</artifactId>

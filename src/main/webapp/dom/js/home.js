@@ -1,13 +1,14 @@
+
 function prepareSlideShow(){
     if(!document.getElementsByTagName) return false;
     if(!document.getElementById) return false;
     var intro = document.getElementById("intro");
     var slideShowDiv = document.createElement("div");
-    slideShowDiv.setAttribute("id","slideshow")
+    slideShowDiv.setAttribute("id", "slideshow")
     var preview = document.createElement("img");
-    preview.setAttribute("src","images/slideshow.gif");
-    preview.setAttribute("alt","a glimpse of what awaits you");
-    preview.setAttribute("id","preview");
+    preview.setAttribute("src", "images/slideshow.gif");
+    preview.setAttribute("alt", "a glimpse of what awaits you");
+    preview.setAttribute("id", "preview");
     slideShowDiv.appendChild(preview);
     insertAfter(slideShowDiv,intro);
 
@@ -36,4 +37,4 @@ function prepareSlideShow(){
 }
 /*---- home end side show -----*/
 
-addLoadEvent(prepareSlideShow);
+    addLoadEvent(prepareSlideShow);

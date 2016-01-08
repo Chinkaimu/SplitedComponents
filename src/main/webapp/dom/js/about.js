@@ -22,7 +22,7 @@ function prepareInternalnav(){
     for (var i = 0 ; i < links.length ; i++) {
         var sectionId = links[i].getAttribute("href").split("#")[1];
         if (!document.getElementById(sectionId)) continue;
-        document.getElementById(sectionId).style.display = "none";
+        if(i != 0)document.getElementById(sectionId).style.display = "none";
         links[i].destination = sectionId;
         links[i].onclick = function(){
             showSection(this.destination);
