@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <title>test onunload</title>
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <script>
+        function checkLeave(){
+            alert("unload");
+            if($("#leaveButton").click == false){
+                alert("leave without click");
+            }
+        }
+//$(window).unload(function(){
+//    alert("Goodbye!");
+//});
+    </script>
+</head>
+<body onunload="checkLeave()">
+    <button id="leaveButton">click me to leave the page</button>
+    <script>
+        $("#leaveButton").click(function(){
+            alert("button click");
+            window.location.href="breakpoint.html";
+        })
+    </script>
+</body>
+</html>
