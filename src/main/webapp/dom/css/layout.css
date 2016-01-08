@@ -82,4 +82,28 @@ header nav li a{
     outline-width: 0;
 }
 
+td{
+    padding:.5em 3em;
+}
 
+dl{
+    overflow: hidden;
+}
+dt{
+    float:left;
+}
+dd{
+    float:left;
+}
+dt{
+    margin-rigth:1em;
+}
+dd{
+    margin-right:3em;
+}
+label{
+    display: block;
+}
+fieldset{
+    border:0;
+}

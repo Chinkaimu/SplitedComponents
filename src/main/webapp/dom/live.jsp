@@ -16,13 +16,43 @@
         <ul>
             <li><a href="home.jsp">home</a></li>
             <li><a href="about.jsp">About</a></li>
-            <li><a href="photo.jsp">Photos</a></li>
+            <li><a href="photos.jsp">Photos</a></li>
             <li><a href="live.jsp">Live</a></li>
             <li><a href="contact.jsp">Contact</a></li>
         </ul>
     </nav>
 </header>
 <article>
+    <h1>Tour Date</h1>
+    <table>
+        <thead>
+        <th>Date</th>
+        <th>City</th>
+        <th>Venue</th>
+        </thead>
+        <tbody>
+        <tr>
+            <td>June 9th</td>
+            <td>Portland,<abbr title="Oregon">OR</abbr></td>
+            <td>Crystal Ballroom</td>
+        </tr>
+        <tr>
+            <td>June 10th</td>
+            <td>Seattle,<abbr title="Washington">WA</abbr></td>
+            <td>Crocodile Cafe</td>
+        </tr>
+        <tr>
+            <td>June 12th</td>
+            <td>Sacramento,<abbr title="California">CA</abbr></td>
+            <td>Torch Club</td>
+        </tr>
+        <tr>
+            <td>June 17th</td>
+            <td>Austin,<abbr title="Texas">TX</abbr></td>
+            <td>Speakeasy</td>
+        </tr>
+        </tbody>
+    </table>
 </article>
 </body>
 </html>

@@ -54,7 +54,7 @@ function moveElement(elementID,final_x,final_y,interval){
     if(!document.getElementById(elementID)) return false;
     var elem = document.getElementById(elementID);
     if(elem.movement){
-        clearTimeout(element.movement);
+        clearTimeout(elem.movement);
     }
     if(!elem.style.left){
         elem.style.left = "0px";
@@ -69,23 +69,50 @@ function moveElement(elementID,final_x,final_y,interval){
     }
     if(xpos < final_x){
         var dist = Math.ceil((final_x - xpos)/10);
-        elem.style.left = xpos + dist;
+         xpos += dist;
     }
     if(xpos > final_x){
         var dist = Math.ceil((xpos - final_x)/10);
-        elem.style.top = xpos - dist;
+        xpos -= dist;
     }
     if(ypos < final_y){
         var dist = Math.ceil((final_y - ypos)/10);
-        elem.style.left = ypos + dist;
+        ypos += dist;
     }
     if(ypos > final_y){
         var dist = Math.ceil((ypos - final_y)/10);
-        elem.style.top = ypos - dist;
+        ypos -= dist;
     }
     elem.style.left = xpos + "px";
     elem.style.top = ypos + "px";
-    var repeat = "moveElement(" + final_x + "," + final_y + "," + interval + ")";
+    var repeat = "moveElement('" + elementID +"'," + final_x + "," + final_y + "," + interval + ")";
     elem.movement = setTimeout(repeat,interval);
 }
+
+function getHttpObject(){
+    if(typeof XMLHttpRequest == 'undefined'){
+        XMLHttpRequest = function(){
+            try{return new ActiveXObject("Msxml2.XMLHTTP.6.0");}
+            catch(e){}
+            try{return new ActiveXObject("Msxml2.XMLHTTP.3.0");}
+            catch(e){}
+            try{return new ActiveXObject("Msxml2.XMLHTTP");}
+            catch(e){}
+            return false;
+        }
+    }
+    return new XMLHttpRequest();
+}
+
+function displayAjaxLoading(element){
+        while(element.hasChildNodes()){
+            element.removeChild(element.lastChild);
+        }
+        var content = document.createElement("img");
+        content.setAttribute("src","images/loading.gif");
+        content.setAttribute("alt","loading...");
+        element.appendChild(content);
+
+}
+
 addLoadEvent(highLightPage);
