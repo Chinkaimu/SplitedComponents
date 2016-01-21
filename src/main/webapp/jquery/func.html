@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>use the functions from jquery</title>
+            <script src="js/1.10.2/jquery.js"></script>
+        </head>
+        <body>
+              <a href="www.baidu.com">百度</a>
+              <a href="www.mvnrepository.com">maven库</a>
+              <a href="bt.byr.com">北邮人BT</a>
+             <script type="text/javascript">
+                 $(function(){
+                 $("a").click(function (event) {
+                    event.preventDefault();
+                     $(this).hide("slow");
+                 })});
+             </script>
+        </body>
+</html>

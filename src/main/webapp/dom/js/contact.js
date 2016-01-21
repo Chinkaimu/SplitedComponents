@@ -42,6 +42,12 @@ function prepareForms(){
     for(var i = 0 ; i < forms.length ; i++){
         var thisform = forms[i];
         resetField(thisform);
+
+        var str = "提交:<input type='submit' value='send'>"
+        var divelem = document.createElement("div");
+        divelem.innerHTML = str;
+        thisform.appendChild(divelem);
+
         thisform.onsubmit = function(){
             if(!validateForm(this)) return false;
             var article = document.getElementsByTagName("article")[0];
@@ -96,6 +102,7 @@ function submitFormWithAjax(whichform,thetarget){
     request.setRequestHeader("ContentType","application/x-www-form-urlencoded");
     request.onreadystatechange = function (){
         if(request.readyState == 4){
+            console.log("readyState == 4 " );
             if(request.status == 200 ||request.status == 0){
                 var matches = request.responseText.match(/<article>([\s\S]+)<\/article>/);
                 if(matches.length > 0){

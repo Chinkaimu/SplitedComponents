@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>selectionDemo</title>
+    <script src="js/1.10.2/jquery.js"></script>
+</head>
+<body>
+    <h1>I am h1<strong> item </strong></h1>
+    <div id="content">
+       <h3>I am the first</h3>
+        <h3>I am the second</h3>
+        <h3>I am the third</h3>
+        <h3>I am the fourth</h3>
+        <ul id="ulId">
+            <li id="li_1">li content1</li>
+            <li id="li_2">li content2</li>
+            <li id="li_3">li content3</li>
+        </ul>
+        <a id="htmla" href="http://www.baidu.com"></a>
+        <a id="htmlb" href="http://www.bing.com"></a>
+        <ul id="myList" ></ul>
+    </div>
+    <button id="disableTest">按钮</button>
+    <div id="content2">
+        </div>
+
+    <input id = "testProp" type="password" value="">
+    <script>
+        $(function(){
+            console.log("$('h1').html() = " + $("h1").html());
+            $("h1").html("hello world<h2> h2 </h2>");
+            $("#content").find("h3")
+                    .eq(2)
+                    .html("change the content")
+                    .end()
+                    .eq(0)
+                    .text("change the content again");
+            $("#ulId").append($("#ulId li:first"));
+            $("#ulId li:first").clone().appendTo($("#ulId"));
+
+            // Creating a new element with an attribute object.
+            $( "<a/>", {
+                html: "This is a <strong>new</strong> link",
+                "class": "new",
+                href: "foo.html"
+            }).insertAfter($("#ulId li:first"));
+
+
+            var myItems = [];
+            var myList = $( "#myList" );
+
+            for ( var i = 0; i < 10; i++ ) {
+                myItems.push( "<li>item " + i + "</li>" );
+            }
+
+            myList.append( myItems.join( "" ) );
+
+            $("#htmlb").html("This is a <strong>new</strong> link");
+            document.getElementById("htmla").innerHTML = "This is a <strong>new</strong> link";;
+            document.getElementById("content2").innerHTML = "<p>This is <em>my</em> test .</p>";
+
+            console.log($("#content2 p em").text());
+
+            $("#htmla").after("<div></div>");
+
+            $("#htmla").prop("disabled",true);
+
+            $("#disableTest").prop( "disabled", true );
+            $("#disableTest").attr("disabled","disabled");
+
+//            $("#testProp").prop("type","text");
+
+            $( "input" ).on(
+                    "change",
+                    { foo: "bar" }, // Associate data with event binding
+                    function( eventObject ) {
+                        console.log("An input value has changed! ", eventObject.data.foo);
+                    }
+            );
+        });
+    </script>
+</body>
+</html>

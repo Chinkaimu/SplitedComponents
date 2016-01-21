@@ -10,16 +10,16 @@
        </div>
        <script>
            var testdiv = document.getElementById("testdiv");
+           var str = "<p>This is <em>my</em> contents.</p>";
 //           testdiv.innerHTML = "<p>This is <em>my</em> contents.</p>";
 
-           testdiv.appendChild(document.createElement("p"));
+           testdiv.appendChild(document.createElement(str));
 
            console.log("testdiv.nodeType = " + testdiv.nodeType);
            console.log("testdiv.childNodes[0].type = " + testdiv.childNodes[0].nodeType + "::value::" + testdiv.childNodes[0].nodeValue + "::name::" + testdiv.childNodes[0].nodeName);
            console.log("testdiv.childNodes[1].type = " + testdiv.childNodes[1].nodeType + "::value::" + testdiv.childNodes[1].nodeValue + "::name::" + testdiv.childNodes[1].nodeName);
-//           console.log("testdiv.childNodes[2].type = " + testdiv.childNodes[2].nodeType + "::value::" + testdiv.childNodes[2].nodeValue);
-//           console.log("testdiv.childNodes[1].type = " + testdiv.childNodes[1].nodeType + "::value::" + testdiv.childNodes[1].nodeValue);
-//           console.log("testdiv.childNodes[1].childNodes[0].type = " + testdiv.childNodes[1].childNodes[0].nodeType + "::value::" + testdiv.childNodes[1].childNodes[0].nodeValue);
+           console.log("testdiv.childNodes[2].type = " + testdiv.childNodes[2].nodeType + "::value::" + testdiv.childNodes[2].nodeValue);
+           console.log("testdiv.childNodes[1].childNodes[0].type = " + testdiv.childNodes[1].childNodes[0].nodeType + "::value::" + testdiv.childNodes[1].childNodes[0].nodeValue);
 //           console.log("testdiv.childNodes[1].childNodes[1].type = " + testdiv.childNodes[1].childNodes[1].nodeType + "::value::" + testdiv.childNodes[1].childNodes[1].nodeValue);
 //           console.log("testdiv.childNodes[1].childNodes[1].childNodes[0].type = " + testdiv.childNodes[1].childNodes[1].childNodes[0].nodeType + "::value::" + testdiv.childNodes[1].childNodes[1].childNodes[0].nodeValue);
        </script>

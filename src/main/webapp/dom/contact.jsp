@@ -38,7 +38,6 @@
               <label for="message">Message:</label>
               <textarea cols="45" rows="7" id="message" name="message" required="required" placeholder="Write your message here."></textarea>
           </p>
-          <input type="submit" value="send">
       </fieldset>
     </form>
 </article>
