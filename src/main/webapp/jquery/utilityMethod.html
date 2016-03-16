@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Utility Method eachDemo</title>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+   <form>
+       真实姓名:<input type="text" id="truename" name="truename">
+       昵称:<input type="text" id="name" name="name">
+       密码:<input type="password" name="password">
+       <a name="href" href="www.baidu.com">baidu</a>
+   </form>
+<script>
+    $(function () {
+        console.log("$.inArray() return the index of item in array");
+        var myArray = [1, 2, 3, 5, 6, 7, 7];
+        if ($.inArray(7, myArray) !== -1) {
+            console.log("myarray.7 = " + $.inArray(7, myArray));
+        }
+
+        console.log("$.extend() ");
+        var firstObject = { foo: "bar", a: "b" };
+        var secondObject = { foo: "baz" ,a :"test"};
+
+        var newObject = $.extend({},firstObject, secondObject );
+
+        console.log(firstObject.foo);
+        console.log(" newObject.foo = " +  newObject.foo  + " ; newObject.a = " +  newObject.a); // "baz"
+
+
+        console.log("$.proxy()");
+        var myFunction = function() {
+            console.log( this);
+        };
+        var myObject = {
+            foo: "bar"
+        };
+
+        myFunction(); // window
+
+        console.log("selections");
+        console.log("$('form input:text').length = " + $('form input:text').length);
+        var arr = $('form input:text');
+        console.log("attr.attr('name') = ",arr.attr("name"));
+        console.log("arr[1].attr('name') = " + arr[1].attr("name"));
+        console.log("$('a').attr('name') = " + $('a').attr('name')  );
+        console.log("document.getElementsByTagName = " + document.getElementsByTagName("input")[0].getAttribute("name"));
+
+    });
+
+
+    $.each(["foo", "bar", "baz"], function (index, value) {
+        console.log("element " + index + " is " + value);
+    });
+
+    $.each({foo: "bar", baz: "bim"}, function (index, value) {
+        console.log(index + " : " + value);
+    });
+
+
+</script>
+</body>
+</html>
