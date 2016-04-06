@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>布局</title>
+    <style type="text/css">
+        *{
+            padding:0;
+            margin:0;
+            border:0;
+        }
+        html {
+            width:90%;
+            height:90%;
+            background-color: #005eff;
+            border:10px dashed #000000;
+        }
+        body{
+            background-color:green;
+            width:80%;
+            height:80%;
+            box-sizing:border-box;
+            background-clip:padding-box;
+            border:5px dotted black;
+        }
+        .parent{
+            background-color:red;
+            /*width:100%;   */
+            /*div就是占用一整行*/
+            height:100%;
+            border:3px solid black;
+        }
+        .children{
+            width:50%;
+            height:50%;
+            background-color: #7b7e7a;
+            margin:0 auto;
+        }
+        .child1{
+            width:60%;
+            height:60%;
+            background-color:#fff;
+        }
+    </style>
+</head>
+<body>
+    I am the body !
+    <div class="parent">
+        <div class="children">
+            I am the children !
+             <div class="child1"></div>
+        </div>
+    </div>
+</body>
+</html>

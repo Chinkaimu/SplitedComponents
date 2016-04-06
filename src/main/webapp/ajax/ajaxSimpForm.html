@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <title>仅提交表单</title>
+    <script type="text/javascript">
+        function encodeData(){
+            console.log("do encodeData");
+            if(!document.getElementsByTagName) return false;
+            var inputs = document.getElementsByTagName("input");
+            var i = 0;
+            var name = "";
+            var value = "";
+            var result = "";
+            for(i ; i < inputs.length ; i++){
+                if(inputs[i].getAttribute("type") == "submit") continue;
+                name = encodeURIComponent(inputs[i].getAttribute("name"));
+                value = encodeURIComponent(inputs[i].value);
+                result += "&"+name+value;
+            }
+            var result2 = "name='陈'&sex='女'";
+            return result2;
+//            return result;
+        }
+        function callback(){
+            alert("完成提交！");
+        }
+        function subpost(){
+           console.log("do subpost");
+           var xhr = new XMLHttpRequest();
+           var url = "../uploadSimpForm";
+           xhr.open("post",url);
+           xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+           xhr.onreadystatechange = callback();
+           xhr.send(encodeData());
+        }
+        function subget(){
+            console.log("do subget");
+            var xhr = new XMLHttpRequest();
+            var url = "../uploadSimpForm";
+            xhr.open("get",url+"?"+encodeData());
+            xhr.onreadystatechange = callback();
+            xhr.send();
+        }
+    </script>
+</head>
+<body>
+<div id="form">
+    <table>
+        <tr>
+            <td><label for="name">姓名：</label></td>
+            <td><input type="text" name="name" id="name"></td>
+        </tr>
+        <tr>
+            <td><label for="sex">性别：</label></td>
+            <td><input type="text" name="sex" id="sex"></td>
+        </tr>
+        <tr>
+            <td><label for="num">联系方式：</label></td>
+            <td><input type="text" name="num" id="num"></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="提交POST" onclick="subpost()"></td>
+            <td><input type="submit" value="提交GET" onclick="subget()"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

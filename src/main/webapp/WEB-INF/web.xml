@@ -13,6 +13,24 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>upload2</servlet-name>
+        <servlet-class>upload2</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>upload2</servlet-name>
+        <url-pattern>/upload2</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>uploadSimpForm</servlet-name>
+        <servlet-class>uploadSimpForm</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>uploadSimpForm</servlet-name>
+        <url-pattern>/uploadSimpForm</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>delete</servlet-name>
         <servlet-class>delete</servlet-class>
     </servlet>
