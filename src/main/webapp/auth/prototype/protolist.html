@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>test prototype</title>
+</head>
+<body>
+  test
+  <script type="text/javascript">
+      // a general function of a constructor function . As a constructor , it can create instances.
+      function Person(name){
+          this.name = name;
+      }
+
+      //run the function
+//      Person("run a general function");
+//      var r = Person("assign the running result to a variable --- r");
+//      console.log("print r : " + r );
+
+      //create an Person instance by the constructor and assign it to a variable
+      //instance is a object but not a function anymore
+//      var instance = new Person("instance");
+      var instance1 = new Person();
+
+      //define a function and make the prototype property been the instance of Person
+        function Func(){}
+        Func.prototype = new Person("Func");
+//      function Func1(){}
+//      Func1.prototype = new Person();
+
+        var instance = new Func();
+  </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>extend by prototype list</title>
+</head>
+<body>
+    extend by prototype list
+    <script type="text/javascript">
+        /*-------------set prototype for the second function----------------------------------------*/
+        function Foo2(){
+            this.value = 3;
+        }
+
+        function Bar2(){}
+        Bar2.prototype = new Foo2();
+
+        var test2 = new Bar2();
+
+
+        /*-------------add the constructor for second function's prototype----------------------*/
+        function Foo1(){
+           this.value = 2;
+        }
+
+        function Bar1(){}
+        Bar1.prototype = new Foo1();
+        Bar1.prototype.constructor = Foo1;
+
+        var test1= new Bar1();
+
+
+         /*-------------add properties for the first and second prototype-------------------*/
+       function Foo(){
+        this.value = 42;
+       }
+
+        Foo.prototype = {
+            method:function(){}
+        };
+
+        function Bar(){}
+
+        //设置Bar的prototype的prototype属性为Foo的实例对象
+        Bar.prototype = new Foo();
+        Bar.prototype.foo = 'Hello World';
+
+        //修正Bar.prototype.constructor为Bar本身
+        Bar.prototype.constructor = Bar;
+
+        //创建Bar的一个新实例
+        var test = new Bar();
+
+
+        /*---------------create the third function---------------------------------------------------------------*/
+        function Chen(){}
+        Chen.prototype = new Bar();
+        Chen.prototype.constructor = Chen;
+        var test3 = new Chen();
+
+    </script>
+</body>
+</html>
