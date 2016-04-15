@@ -1,0 +1,206 @@
+<!-- completed by raw javascript ; two story-->
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>目录树</title>
+    <script src="js/global.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        function createFolder(elem,event){
+            var folder_contents = elem.getElementsByClassName("tree-folder-content");
+
+            if(folder_contents.length != 0 ) {
+                var folder_content = folder_contents[0];
+                var folder_headers = elem.getElementsByClassName("tree-folder-header");
+                if(folder_headers.length != 0){
+                    var folder_header = folder_headers[0];
+                    var tag = folder_header.getElementsByTagName("i")[0];
+                }
+
+                var folder_folder = folder_content.getElementsByClassName("tree-folder");
+
+                if (folder_folder.length == 0) {
+                    var tree_folder = document.createElement("div");
+                    tree_folder.className = "tree-folder";
+                    var tree_folder_header = document.createElement("div");
+                    tree_folder_header.className = "tree-folder-header";
+                    var fa_folder = document.createElement("i");
+                    fa_folder.className = "fa fa-folder blue";
+                    var tree_folder_name = document.createElement("div");
+                    tree_folder_name.className = "tree-folder-name";
+                    var head_text = document.createTextNode("Sales");
+                    tree_folder_name.appendChild(head_text);
+                    var tree_folder_content = document.createElement("div");
+                    tree_folder_content.className = "tree-folder-content";
+//                    tree_folder_content.style.display = "none";
+                    var tree_item1 = document.createElement("div");
+                    tree_item1.className = "tree-item";
+                    tree_item1.innerHTML = "Reports";
+                    var tree_item2 = document.createElement("div");
+                    tree_item2.className = "tree-item";
+                    tree_item2.innerHTML = "Finance";
+
+                    tree_folder_header.appendChild(fa_folder);
+                    tree_folder_header.appendChild(tree_folder_name);
+                    tree_folder_content.appendChild(tree_item1);
+                    tree_folder_content.appendChild(tree_item2);
+                    tree_folder.appendChild(tree_folder_header);
+                    tree_folder.appendChild(tree_folder_content);
+
+                    tree_folder.onclick = function (event) {
+                        createFolder(this,event)
+                    };
+                    folder_contents[0].appendChild(tree_folder);
+                    folder_contents[0].appendChild(tree_item1);
+                    folder_contents[0].appendChild(tree_item2);
+                }
+                else if (folder_content.style.display == "none") {
+                    replaceClass(tag,"fa-folder","fa-folder-open");
+                    folder_content.style.display = "block";
+                } else {
+                    replaceClass(tag,"fa-folder-open","fa-folder");
+                    folder_content.style.display = "none";
+                }
+            }
+            event.stopPropagation();
+        }
+
+        function folderToggle() {
+            if (!document.getElementsByClassName) return false;
+            var tree_items = document.getElementsByClassName("tree-item");
+            for (var j = 0; j < tree_items.length; j++) {
+                tree_items[j].onclick = function (event) {
+                    event.stopPropagation();
+                }
+            }
+            var tree_folders = document.getElementsByClassName("tree-folder");
+            for (var i = 0; i < tree_folders.length; i++) {
+                tree_folders[i].onclick = function(event){
+                    console.log("click");
+                    createFolder(this,event);
+                }
+            }
+        }
+        addLoadEvent(folderToggle);
+    </script>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+    <style type="text/css">
+        .page-body{
+            margin-top: 50px;
+            margin-left: 50px;
+        }
+        .tree{
+            position:relative;
+            padding-left:14px;
+            overflow: hidden;
+        }
+        .tree:before{
+            width:1px;
+            z-index:1;
+            display:block;
+            content:"";
+            position:absolute;
+            top:-21px;
+            bottom:16px;
+            left:0;
+            border-left: 1px dotted #666;
+        }
+        .tree .tree-folder{
+            position:relative;
+            display: block;
+            border:1px solid transparent;
+            width:auto;
+            min-height: 20px;
+            cursor:pointer;
+        }
+        .tree-folder:before{
+            width:18px;
+            z-index:1;
+            display:inline-block;
+            content:"";
+            position:absolute;
+            top:8px;
+            left:-18px;
+            height:0;
+            border-bottom: 1px dotted #666;
+        }
+        .tree .tree-folder-header>i{
+            display:inline-block;
+            font-family: FontAwesome;
+            font-style: normal;
+            font-weight: normal;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+        }
+        .tree .tree-folder .tree-folder-header .tree-folder-name,.tree .tree-item .tree-item-name{
+            display:inline;
+            z-index:2;
+        }
+        .tree .tree-folder .tree-folder-header .tree-folder-name{
+            margin-left: 2px;
+        }
+        .tree .tree-folder .tree-folder-content{
+            margin-left: 23px;
+            position:relative;
+        }
+        .tree .tree-folder .tree-folder-content:before{
+            width:1px;
+            z-index:1;
+            content:"";
+            position:absolute;
+            top:-5px;
+            left:-16px;
+            bottom:16px;
+            display:inline-block;
+            border-left: 1px dotted #666;
+        }
+        .tree .tree-item{
+            margin:0;
+            padding:4px 5px 6px 5px;
+            color:#333;
+            -webkit-box-sizing: content-box;
+            -moz-box-sizing: content-box;
+            box-sizing: content-box;
+            position:relative;
+            cursor:default;
+        }
+        .tree-item:before{
+            display: inline-block;
+            z-index: 1;
+            width: 18px;
+            content: "";
+            position: absolute;
+            top: 12px;
+            left: -14px;
+            height: 0;
+            border-bottom: 1px dotted #666;
+        }
+        .blue{
+            color:#28b3d3;
+        }
+    </style>
+</head>
+<body>
+<div class="page-body">
+    <div class="tree">
+        <div class="tree-folder">
+            <div class="tree-folder-header">
+                <i class="fa fa-folder blue">
+                </i>
+                <div class="tree-folder-name">Sales</div>
+            </div>
+            <div class="tree-folder-content">
+
+            </div>
+        </div>
+        <div class="tree-item">
+            <div class="tree-item-name">Finance</div>
+        </div>
+        <div class="tree-item">
+            <div class="tree-item-name">Report</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
