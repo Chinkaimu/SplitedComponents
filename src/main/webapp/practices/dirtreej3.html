@@ -1,0 +1,171 @@
+<!-- completed by raw javascript ; more stories-->
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>目录树</title>
+    <script src="js/jquery.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".tree .tree-folder").click(function(event){
+                createNew(this,event);
+            });
+        });
+
+        function createNew(elem,event){
+            $(elem).children("div.tree-folder-header").eq(0).children("i.fa").toggleClass("fa-folder");
+            $(elem).children("div.tree-folder-header").eq(0).children("i.fa").toggleClass("fa-folder-open");
+
+            if($(elem).children("div.tree-folder-content").length > 0) {
+                $(elem).children("div.tree-folder-content").eq(0).toggle();
+            }else{
+                var content = $('<div class="tree-folder-content"></div>');
+                var folder1 = $('<div class="tree-folder"></div>');
+                console.log("folder1 =  " + folder1);
+                folder1.append($('<div class="tree-folder-header"></div>').append($('<i class="fa fa-folder blue"></i>'),$('<div class="tree-folder-name">').text("Sales")));
+                var folder2 = $('<div class="tree-folder"></div>');
+                folder2.append($('<div class="tree-folder-header"></div>').append($('<i class="fa fa-folder blue"></i>'),$('<div class="tree-folder-name">').text("Project")));
+                content.append(folder1,folder2);
+                console.log("content = " + content[0]);
+                folder1.click(function(e){createNew(this,e)});
+                folder2.click(function(e){createNew(this,e)});
+
+                var item1 = $('<div class="tree-item"></div>').append($('<div class="tree-item-name"></div>').text('Finance'));
+                var item2 = $('<div class="tree-item"></div>').append($('<div class="tree-item-name"></div>').text('Report'));
+                item1.click(function(){
+                    return false;
+                });
+                item2.click(function(){
+                    return false;
+                });
+                content.append(item1,item2);
+                $(elem).append(content);
+            }
+            //return false; 不适用
+            event.stopPropagation();
+        }
+    </script>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+    <style type="text/css">
+        .page-body{
+            margin-top: 50px;
+            margin-left: 50px;
+        }
+        .tree{
+            position:relative;
+            padding-left:14px;
+            overflow: hidden;
+        }
+        .tree:before{
+            width:1px;
+            z-index:1;
+            display:block;
+            content:"";
+            position:absolute;
+            top:-21px;
+            bottom:16px;
+            left:0;
+            border-left: 1px dotted #666;
+        }
+        .tree .tree-folder{
+            position:relative;
+            display: block;
+            border:1px solid transparent;
+            width:auto;
+            min-height: 20px;
+            cursor:pointer;
+        }
+        .tree-folder:before{
+            width:18px;
+            z-index:1;
+            display:inline-block;
+            content:"";
+            position:absolute;
+            top:8px;
+            left:-18px;
+            height:0;
+            border-bottom: 1px dotted #666;
+        }
+        .tree .tree-folder-header>i{
+            display:inline-block;
+            font-family: FontAwesome;
+            font-style: normal;
+            font-weight: normal;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+        }
+        .tree .tree-folder .tree-folder-header .tree-folder-name,.tree .tree-item .tree-item-name{
+            display:inline;
+            z-index:2;
+        }
+        .tree .tree-folder .tree-folder-header .tree-folder-name{
+            margin-left: 2px;
+        }
+        .tree .tree-folder .tree-folder-content{
+            margin-left: 23px;
+            position:relative;
+        }
+        .tree .tree-folder .tree-folder-content:before{
+            width:1px;
+            z-index:1;
+            content:"";
+            position:absolute;
+            top:-5px;
+            left:-16px;
+            bottom:16px;
+            display:inline-block;
+            border-left: 1px dotted #666;
+        }
+        .tree .tree-item{
+            margin:0;
+            padding:4px 5px 6px 5px;
+            color:#333;
+            -webkit-box-sizing: content-box;
+            -moz-box-sizing: content-box;
+            box-sizing: content-box;
+            position:relative;
+            cursor:default;
+        }
+        .tree-item:before{
+            display: inline-block;
+            z-index: 1;
+            width: 18px;
+            content: "";
+            position: absolute;
+            top: 12px;
+            left: -14px;
+            height: 0;
+            border-bottom: 1px dotted #666;
+        }
+        .blue{
+            color:#28b3d3;
+        }
+    </style>
+</head>
+<body>
+<div class="page-body">
+    <div class="tree">
+        <div class="tree-folder">
+            <div class="tree-folder-header">
+                <i class="fa fa-folder blue">
+                </i>
+                <div class="tree-folder-name">Sales</div>
+            </div>
+        </div>
+        <div class="tree-folder">
+            <div class="tree-folder-header">
+                <i class="fa fa-folder blue">
+                </i>
+                <div class="tree-folder-name">Project</div>
+            </div>
+        </div>
+        <div class="tree-item">
+            <div class="tree-item-name">Finance</div>
+        </div>
+        <div class="tree-item">
+            <div class="tree-item-name">Report</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

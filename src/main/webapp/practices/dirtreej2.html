@@ -1,50 +1,21 @@
-<!-- completed by raw javascript ; two stories-->
+<!-- completed by jquery ; two stories-->
 <!DOCTYPE html>
 <html>
 <head lang="en">
     <meta charset="UTF-8">
     <title>目录树</title>
-    <script src="js/global.js" type="text/javascript"></script>
+    <script src="js/jquery.js" type="text/javascript"></script>
     <script type="text/javascript">
-        function folderToggle() {
-            if (!document.getElementsByClassName) return false;
-
-            var tree_items = document.getElementsByClassName("tree-item");
-            for(var j = 0 ; j < tree_items.length ; j++){
-                tree_items[j].onclick = function(event){
-                    event.stopPropagation();
-//                    return false;
-                }
-            }
-
-            var tree_folders = document.getElementsByClassName("tree-folder");
-            for(var i = 0 ; i < tree_folders.length ; i++){
-                tree_folders[i].onclick = function(event){
-                    var folder_contents = this.getElementsByClassName("tree-folder-content");
-                    if(folder_contents.length != 0 ){
-                        var folder_content = folder_contents[0];
-
-                        var folder_headers = this.getElementsByClassName("tree-folder-header");
-                        if(folder_headers.length != 0){
-                            var folder_header = folder_headers[0];
-                            var tag = folder_header.getElementsByTagName("i")[0];
-                        }
-
-                        if(folder_content.style.display == "none"){
-                            replaceClass(tag,"fa-folder","fa-folder-open");
-                            folder_content.style.display = "block";
-                        }else{
-                            replaceClass(tag,"fa-folder-open","fa-folder");
-                            folder_content.style.display = "none";
-                        }
-                    }
-                     event.stopPropagation();
-//                    return false;
-                }
-            }
-        }
-
-        addLoadEvent(folderToggle);
+        $(document).ready(function(){
+            $(".tree .tree-folder").click(function(event){
+                $(this).children("div.tree-folder-content").toggle();
+                $(this).children("div.tree-folder-header").children("i.fa").toggleClass("fa-folder");
+                $(this).children("div.tree-folder-header").children("i.fa").toggleClass("fa-folder-open");
+                //jQuery可以通过return false阻止事件进行,但是js不可以通过此阻止事件冒泡
+                return false;
+//                event.stopPropagation();
+            });
+        });
     </script>
     <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
     <style type="text/css">
