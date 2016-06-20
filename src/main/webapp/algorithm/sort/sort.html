@@ -3,9 +3,15 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>排序算法</title>
-    <>
+    <script src="js/sort.js"></script>
 </head>
 <body>
-
+  <div>
+     请输入待排序字串,用逗号隔开,如"5,6,3,6,4,3"
+      <input type="text" id="sort_items" name="sort_items">
+      <input type="button" name="sort_button" value="快速排序" onclick="sort('quick')">
+      <input type="button" name="sort_button" value="冒泡排序" onclick="sort('bubble')">
+      <div id="sort_result"></div>
+  </div>
 </body>
 </html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>mask</title>
+    <style>
+        *{
+        margin:0;
+        padding:0;
+        }
+        #target{
+            margin-left:100px;
+            margin-top: 100px;
+            height:228px;
+        }
+        .mask{
+            width:300px;
+            height:200px;
+            background-color: tomato;
+        }
+    </style>
+</head>
+<body>
+  <div class="images" id="target">
+      picture1 picture1 picture1 picture1 picture1 picture1 picture1<br/> picture1 picture1 picture1 picture1
+      picture2picture1 picture1 picture1 picture1 picture1 <br/>picture1 picture1 picture1 picture1 picture1 picture1 picture1 picture1
+      <img src="images/002.jpg"/>
+  </div>
+  <div id="mask" class="mask">
+  </div>
+<script>
+  function addMask(elem,opacity){
+    if(!opacity){
+        opacity = 0.2;
+    }
+
+     var rect = elem.getBoundingClientRect();
+      //elem.style获得的是css样式设置的属性值; getComputedStyle()是元素表现的属性值
+     var style = getComputedStyle(elem,null);
+     var mask = document.getElementById("mask");
+
+      mask.style.position = "absolute";
+
+      //重点:style属性的值都为字符串,要进行算术运算时一定要转换成数值.设置属性值时记得要转换成字符串!
+      var marginLeft = parseFloat(style.marginLeft);
+      var marginTop = parseFloat(style.marginTop);
+      var marginRight = parseFloat(style.marginRight);
+      var marginBottom = parseFloat(style.marginBottom);
+//      console.log("marginLeft = " + marginLeft + "; marginTop = " + marginTop + ":marginRight =" + marginRight + ":marginBottom =" + marginBottom);
+//      console.log("offsetLeft =" + elem.offsetLeft + " ; offsetTop = " + elem.offsetTop);
+//      console.log("rect.height = " + rect.height + ";rect.width = " + rect.width);
+//      console.log("style.height = " + style.height + ";rect.height = " + rect.height);
+//      console.log("content.height = " + elem.style.height);
+
+      mask.style.left = (elem.offsetLeft - marginLeft) + "px";
+      mask.style.top = (elem.offsetTop - marginTop) + "px";
+      mask.style.width = (marginLeft + marginRight + rect.width) + "px";
+      mask.style.height = (marginTop + marginBottom + rect.height) + "px";
+      mask.style.zIndex = "999";
+      mask.style.backgroundColor = "#000";
+      mask.style.opacity = "0.2";
+
+      elem.offsetParent.appendChild(mask);
+
+
+  }
+
+    var target = document.getElementById("target");
+    addMask(target);
+
+    target.addEventListener("click",function(){
+        console.log("click");
+    },false);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>too_tip test</title>
+    <style type="text/css">
+      #tool_tip{
+          border:1px solid #2bd6ff;
+          padding:5px 10px;
+          width:300px;
+          height:30px;
+          position: relative;
+          margin-top:100px;
+      }
+      #tool_tip:before,#tool_tip:after{
+          display: block;
+          content: "";
+          bottom:40px;
+          position:absolute;
+      }
+
+        #tool_tip:before{
+            border:14px solid transparent;
+            border-bottom-color:#2bd6ff;
+            left:11px;
+        }
+
+        #tool_tip:after{
+            border:13px solid transparent;
+            border-bottom-color: #fff;
+            left:12px;
+        }
+
+    </style>
+</head>
+<body>
+<div chm="000" id="tool_tip">
+  商铺装修新功能上线! <a href="javascript:void(0);" id="got_it">我知道了!</a>
+</div>
+<script>
+  function visited(){
+      var date = new Date().toDateString();
+      var visit_time = document.getElementById("tool_tip").getAttribute("visit_time");
+      console.log("visit_time = " + visit_time);
+      if(visit_time && date == visit_time){
+          console.log("here");
+          document.getElementById("tool_tip").style.display = "none";
+      }else {
+          document.getElementById("tool_tip").setAttribute("visit_time", date);
+      }
+  }
+
+  function setCookie(c_name,value,expiredays){
+    var exdate = new Date();
+      exdate.setDate(exdate.getDate() + expiredays);
+      console.log("1 docuemnt.cookie = " + document.cookie);
+      document.cookie = c_name + "=" + escape(value) +((expiredays == null)?"":";expires=" + exdate.toGMTString());
+      console.log("2 docuemnt.cookie = " + document.cookie);
+  }
+
+  function getCookie(c_name){
+      if(document.cookie.length > 0){
+          c_start = document.cookie.indexOf(c_name + "=");
+          if(c_start != -1){
+              c_start = c_start + c_name.length + 1;
+              c_end = document.cookie.indexOf(";",c_start);
+              if(c_end == -1) c_end = document.cookie.length;
+              return unescape(document.cookie.substring(c_start,c_end));
+          }
+      }
+      return "";
+  }
+
+  function checkCookie(){
+      var got_it = getCookie('gotit');
+
+      if(got_it){
+          document.getElementById("tool_tip").style.display = "none";
+      }else {
+          var username = getCookie('username');
+          if (username != null && username != "") {
+              document.getElementById("tool_tip").style.display = "none";
+          } else {
+              username = prompt('Please enter your name:');
+              if (username != null && username != "") {
+                  setCookie("username", username, 1);
+              }
+          }
+      }
+  }
+
+    window.onload = function(){
+        console.log(document.querySelector("#tool_tip").getAttribute("chm"));
+        checkCookie();
+        if( document.getElementById("tool_tip").style.display != "none"){
+            document.getElementById("got_it").addEventListener("click",function() {
+                        document.getElementById("tool_tip").style.display = "none";
+                        setCookie("gotit", "true", 365);
+                    },false);
+        }
+    }
+</script>
+</body>
+</html>
